@@ -13,15 +13,19 @@ export const checkAccess = (req, res, next) => {
   const customerId = req.headers['x-customer-id'];
 
   if (!customerId) {
-    return res.status(400).json({ message: 'Missing x-customer-id header' });
+    const error = new Error('Missing x-customer-id header');
+    error.status = 400;
+    return next(error);
   }
 
   const customer = subscriptionsData[customerId];
 
-  if (customer === undefined) {
-    return res
-      .status(400)
-      .json({ message: `Customer ${customerId} does not exist` });
+  if (!customer) {
+    const error = new Error(
+      `Customer ${customerId} does not have exist access`
+    );
+    error.status = 404;
+    return next(error);
   }
 
   const { trial_start, trial_end, current_period_start, current_period_end } =
@@ -39,14 +43,18 @@ export const checkAccess = (req, res, next) => {
     crrTime >= current_period_start &&
     crrTime < current_period_end;
 
-  if (hasTrial) {
-    req.hasAccess = hasTrial;
-    return next();
-  } else if (hasSub) {
-    req.hasAccess = hasSub;
-    return next();
+  if (!hasTrial && !hasSub) {
+    const error = new Error(
+      `Access denied: ustomer ${customerId} doesn't have trial version or subscription`
+    );
+    error.status = 403;
+    return next(error);
   }
 
-  req.hasAccess = hasSub;
-  return next();
+  req.customer = {
+    id: customerId,
+    hasTrial
+  };
+
+  next();
 };

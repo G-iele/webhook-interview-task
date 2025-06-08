@@ -1,11 +1,8 @@
 export const getProduct = (req, res) => {
-  if (req.hasAccess) {
-    return res.status(200).json({
-      message: `Customer has access to the product. Subscription is active`
-    });
-  } else {
-    return res.status(200).json({
-      message: `Subscription is not active`
-    });
-  }
+  const { id, hasTrial } = req.customer;
+  res.status(200).json({
+    message: `Customer ${id} has access to the product. ${
+      hasTrial ? 'Trial' : 'Subscription'
+    } is active`
+  });
 };
