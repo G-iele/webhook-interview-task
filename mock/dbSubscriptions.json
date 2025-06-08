@@ -1,0 +1,20 @@
+{
+  "cus_1": {
+    "current_period_start": 1749201547,
+    "current_period_end": 1750001547,
+    "trial_start": null,
+    "trial_end": null
+  },
+  "cus_2": {
+    "current_period_start": 1717651200,
+    "current_period_end": 1717737600,
+    "trial_start": null,
+    "trial_end": null
+  },
+  "cus_3": {
+    "current_period_start": null,
+    "current_period_end": null,
+    "trial_start": 1749201547,
+    "trial_end": 1750001547
+  }
+}

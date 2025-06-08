@@ -1,0 +1,17 @@
+{
+  "name": "webhook-interview-task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "dev": " node --watch --env-file=.env server"
+  },
+  "keywords": [],
+  "author": "Ieva",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
