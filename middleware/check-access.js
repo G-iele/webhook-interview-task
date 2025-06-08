@@ -22,9 +22,9 @@ export const checkAccess = (req, res, next) => {
 
   if (!customer) {
     const error = new Error(
-      `Customer ${customerId} does not have exist access`
+      `Access denied: customer ${customerId} doesn't have subscription`
     );
-    error.status = 404;
+    error.status = 403;
     return next(error);
   }
 
@@ -45,7 +45,7 @@ export const checkAccess = (req, res, next) => {
 
   if (!hasTrial && !hasSub) {
     const error = new Error(
-      `Access denied: ustomer ${customerId} doesn't have trial version or subscription`
+      `Access denied: customer ${customerId} doesn't have subscription`
     );
     error.status = 403;
     return next(error);
