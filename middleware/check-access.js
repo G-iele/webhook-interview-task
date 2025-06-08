@@ -5,10 +5,10 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dbPath = path.join(__dirname, '../mock/dbSubscriptions.json');
-const subscriptionsData = JSON.parse(fs.readFileSync(dbPath));
+const dbPath = path.join(__dirname, '..', 'mock', 'dbSubscriptions.json');
 
 export const checkAccess = (req, res, next) => {
+  const subscriptionsData = JSON.parse(fs.readFileSync(dbPath));
   const crrTime = Math.floor(Date.now() / 1000);
   const customerId = req.headers['x-customer-id'];
 
