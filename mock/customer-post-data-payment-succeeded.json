@@ -5,5 +5,5 @@
       "status": "active"
     }
   },
-  "type": "customer.subscription.resumed"
+  "type": "invoice.payment_succeeded"
 }

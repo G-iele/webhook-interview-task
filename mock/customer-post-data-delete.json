@@ -2,15 +2,7 @@
   "data": {
     "object": {
       "customer": "cus_1",
-      "items": {
-        "data": [
-          {
-            "deleted": true
-          }
-        ]
-      },
-      "trial_end": null,
-      "trial_start": null
+      "status": "canceled"
     }
   },
   "type": "customer.subscription.deleted"

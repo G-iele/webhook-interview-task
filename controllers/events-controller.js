@@ -13,36 +13,18 @@ const subscriptionsData = JSON.parse(fs.readFileSync(dbPath));
 export const postEvents = (req, res) => {
   const {
     data: {
-      object: {
-        customer: customerId,
-        items: { data },
-        trial_end,
-        trial_start
-      }
+      object: { customer: customerId, status }
     },
     type
   } = req.body;
 
-  if (eventTypes[type] === 'deleted' && data[0].deleted) {
-    delete subscriptionsData[customerId];
-
-    fs.writeFileSync(dbPath, JSON.stringify(subscriptionsData, null, 2));
-    return res.status(200).json({
-      message: `Subscription for customer ${customerId} is ${eventTypes[type]}`
-    });
-  }
-
-  const [{ current_period_end, current_period_start }] = data;
-
   subscriptionsData[customerId] = {
-    current_period_end,
-    current_period_start,
-    trial_end,
-    trial_start
+    ...subscriptionsData[customerId],
+    status
   };
 
   fs.writeFileSync(dbPath, JSON.stringify(subscriptionsData, null, 2));
   return res.status(200).json({
-    message: `Subscription for customer ${customerId} is ${eventTypes[type]}`
+    message: `Subscription for customer ${customerId} is ${eventTypes[type]} (${status})`
   });
 };

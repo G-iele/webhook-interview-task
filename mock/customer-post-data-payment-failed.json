@@ -2,8 +2,8 @@
   "data": {
     "object": {
       "customer": "cus_1",
-      "status": "active"
+      "status": "past_due"
     }
   },
-  "type": "customer.subscription.resumed"
+  "type": "invoice.payment_failed"
 }

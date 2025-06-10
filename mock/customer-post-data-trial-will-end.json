@@ -5,5 +5,5 @@
       "status": "trialing"
     }
   },
-  "type": "customer.subscription.created"
+  "type": "customer.subscription.trial_will_end"
 }

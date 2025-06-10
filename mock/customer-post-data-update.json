@@ -2,16 +2,7 @@
   "data": {
     "object": {
       "customer": "cus_1",
-      "items": {
-        "data": [
-          {
-            "current_period_end": 1750001547,
-            "current_period_start": 1749201547
-          }
-        ]
-      },
-      "trial_end": null,
-      "trial_start": null
+      "status": "active"
     }
   },
   "type": "customer.subscription.updated"

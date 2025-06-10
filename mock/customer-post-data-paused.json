@@ -2,8 +2,8 @@
   "data": {
     "object": {
       "customer": "cus_1",
-      "status": "active"
+      "status": "paused"
     }
   },
-  "type": "customer.subscription.resumed"
+  "type": "customer.subscription.paused"
 }
